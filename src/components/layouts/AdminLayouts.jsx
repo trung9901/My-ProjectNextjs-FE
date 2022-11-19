@@ -1,6 +1,20 @@
 import React from "react";
+import Navbar from "../admin/Navbar";
+import { useRouter } from "next/router";
 
 const AdminLayouts = ({ children }) => {
+  const nav = [
+    { name: "Dashboard", href: "/admin" },
+    { name: "Products", href: "/admin/products" },
+    { name: "Categories", href: "/admin/categories" },
+    { name: "Sizes", href: "/admin/sizes" },
+    { name: "Orders", href: "/admin/orders" },
+    { name: "Colors", href: "/admin/colors" },
+    { name: "Users", href: "/admin/users" },
+    { name: "Posts", href: "/admin/posts" },
+    { name: "Comments", href: "/admin/comments" },
+  ];
+  const router = useRouter();
   return (
     <div>
       <div className="min-h-full">
@@ -16,40 +30,7 @@ const AdminLayouts = ({ children }) => {
                   />
                 </div>
                 <div className="hidden md:block">
-                  <div className="ml-10 flex items-baseline space-x-4">
-                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    <a
-                      href="#"
-                      className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                      aria-current="page"
-                    >
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Calendar
-                    </a>
-                    <a
-                      href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      Reports
-                    </a>
-                  </div>
+                  <Navbar nav={nav} />
                 </div>
               </div>
               <div className="hidden md:block">
@@ -90,19 +71,19 @@ const AdminLayouts = ({ children }) => {
                         <img
                           className="h-8 w-8 rounded-full"
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                          alt
+                          alt=""
                         />
                       </button>
                     </div>
 
-                    <div
+                    {/* <div
                       className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu-button"
                       tabIndex={-1}
                     >
-                      {/* Active: "bg-gray-100", Not Active: "" */}
+                     
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-700"
@@ -130,7 +111,7 @@ const AdminLayouts = ({ children }) => {
                       >
                         Sign out
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -229,7 +210,7 @@ const AdminLayouts = ({ children }) => {
                   <img
                     className="h-10 w-10 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt
+                    alt=""
                   />
                 </div>
                 <div className="ml-3">
@@ -263,7 +244,7 @@ const AdminLayouts = ({ children }) => {
                   </svg>
                 </button>
               </div>
-              <div className="mt-3 space-y-1 px-2">
+              {/* <div className="mt-3 space-y-1 px-2">
                 <a
                   href="#"
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
@@ -282,22 +263,23 @@ const AdminLayouts = ({ children }) => {
                 >
                   Sign out
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </nav>
         <header className="bg-white shadow">
           <div className="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-              Dashboard
+              {nav.map((item) =>
+                item.href === router.pathname ? item.name : ""
+              )}
             </h1>
           </div>
         </header>
-        <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <main className="">
+          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8 ">
             {/* Replace with your content */}
-
-            {children}
+            <div className=" ">{children}</div>
 
             {/* /End replace */}
           </div>
