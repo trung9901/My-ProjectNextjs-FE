@@ -1,14 +1,16 @@
 import * as methods from "../api/methods";
-import { useSWR } from "swr";
-const enpoints = "/colors";
-export const useProducts = () => {
-  const { data, error, mutate } = useSWR(enpoints, methods.httpGet);
+import useSWR from "swr";
+const enpoints = "/size";
+const useSize = () => {
+  const { data, error, mutate } = useSWR(enpoints, {
+    refreshInterval: 3000,
+  });
   const createSize = async (product) => {
     const res = await methods.httpPost(enpoints, product);
     mutate([...data, res]);
   };
-  const updateSize = async (id, data) => {
-    const res = await methods.httpPut(`${enpoints}/${id}`, data);
+  const updateSize = async (id, item) => {
+    const res = await methods.httpPut(`${enpoints}/${id}`, item);
     mutate(data.map((product) => (product.id === id ? res : product)));
   };
   const deleteSize = async (id) => {
@@ -17,3 +19,4 @@ export const useProducts = () => {
   };
   return { data, error, createSize, updateSize, deleteSize };
 };
+export default useSize;

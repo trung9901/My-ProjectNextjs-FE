@@ -2,14 +2,14 @@ import useSWR from "swr";
 import * as methods from "../api/methods";
 
 const enpoints = "/colors";
-export const useProducts = () => {
-  const { data, error, mutate } = useSWR(enpoints, methods.httpGet);
+const useColor = () => {
+  const { data, error, mutate } = useSWR(enpoints, { refreshInterval: 3000 });
   const createColor = async (product) => {
     const res = await methods.httpPost(enpoints, product);
     mutate([...data, res]);
   };
-  const updateColor = async (id, data) => {
-    const res = await methods.httpPut(`${enpoints}/${id}`, data);
+  const updateColor = async (id, item) => {
+    const res = await methods.httpPut(`${enpoints}/${id}`, item);
     mutate(data.map((product) => (product.id === id ? res : product)));
   };
   const deleteColor = async (id) => {
@@ -18,3 +18,4 @@ export const useProducts = () => {
   };
   return { data, error, createColor, updateColor, deleteColor };
 };
+export default useColor;
