@@ -7,9 +7,9 @@ const AdminLayouts = ({ children }) => {
     { name: "Dashboard", href: "/admin" },
     { name: "Products", href: "/admin/products" },
     { name: "Categories", href: "/admin/categories" },
-    { name: "Sizes", href: "/admin/sizes" },
+
     { name: "Orders", href: "/admin/orders" },
-    { name: "Colors", href: "/admin/colors" },
+
     { name: "Users", href: "/admin/users" },
     { name: "Posts", href: "/admin/posts" },
     { name: "Comments", href: "/admin/comments" },
