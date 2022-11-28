@@ -4,7 +4,7 @@ import { Button, Space, Table, Tooltip } from "antd";
 import { Skeleton } from "antd";
 import useCategories from "../../../hooks/use-categories";
 import { useRouter } from "next/router";
-import Form from "./[id]";
+
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import AlertMessage from "../../../ultils/Alert";
 import Link from "next/link";
