@@ -88,7 +88,7 @@ const ProductAdd = () => {
             onChange={handleChange}
           />
         </Form.Item>
-        <Form.List name="sights">
+        <Form.List name="color">
           {(fields, { add, remove }) => (
             <>
               {fields.map((field) => (
@@ -103,40 +103,40 @@ const ProductAdd = () => {
                     {() => (
                       <Form.Item
                         {...field}
-                        label="Sight"
-                        name={[field.name, "sight"]}
+                        label="Color"
+                        name={[field.name, "color"]}
                         rules={[
                           {
                             required: true,
-                            message: "Missing sight",
+                            message: "Chưa nhập màu",
                           },
                         ]}
                       >
-                        <Select
-                          disabled={!form.getFieldValue("area")}
-                          style={{
-                            width: 130,
-                          }}
-                        >
-                          {(sights[form.getFieldValue("area")] || []).map(
-                            (item) => (
-                              <Option key={item} value={item}>
-                                {item}
-                              </Option>
-                            )
-                          )}
-                        </Select>
+                        <Input disabled={!form.getFieldValue("category")} />
                       </Form.Item>
                     )}
                   </Form.Item>
                   <Form.Item
                     {...field}
-                    label="Price"
-                    name={[field.name, "price"]}
+                    label="Size"
+                    name={[field.name, "size"]}
                     rules={[
                       {
                         required: true,
-                        message: "Missing price",
+                        message: "Missing size",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    {...field}
+                    label="Quantity"
+                    name={[field.name, "quantity"]}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Missing quantity",
                       },
                     ]}
                   >
