@@ -6,15 +6,15 @@ const Header = () => {
   return (
     <>
       <div className="">
-        <div className="relative">
-          <div className="absolute top-8 left-14">
+        <div className="">
+          <div className={styles.logo}>
             <img src="../../887_vi.png" alt="" width="100%" />
           </div>
           <div className="">
             <img src="../../508_vi.png" alt="" width="100%" />
           </div>
         </div>
-        <div className="bg-[url('http://trasuamoc.com/images/color_menu.png')] relative h-10 ">
+        <div className={styles.nav}>
           <ul className="flex">
             <li>
               <Link href={`/`}>Trang chủ</Link>

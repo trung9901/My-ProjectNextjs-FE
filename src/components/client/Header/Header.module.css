@@ -1,1 +1,7 @@
-.nav
+.nav {
+  @apply bg-[url('http://trasuamoc.com/images/color_menu.png')] relative h-10;
+}
+.logo {
+  /* content: ""; */
+  @apply absolute;
+}
