@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { UserOutlined } from "@ant-design/icons";
+import { UserOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { Dropdown, Badge, Space } from "antd";
 // import styles from "./Header.module.css";
 
 const Header = () => {
@@ -11,6 +12,20 @@ const Header = () => {
 
     { link: "", name: "Tin tức" },
     { link: "", name: "Liên hệ" },
+  ];
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      ),
+    },
   ];
   return (
     <>
@@ -39,12 +54,23 @@ const Header = () => {
                 );
               })}
             </ul>
-            <div className="cart leading-[50px] text-white ">
-              <div className="">
-                <UserOutlined /> <span>Đăng ký</span>
+            <div className="cart leading-[50px]  flex">
+              <div className="ml-5 text-white cursor-pointer">
+                <Dropdown
+                  menu={{
+                    items,
+                  }}
+                  placement="bottom"
+                >
+                  <UserOutlined style={{ fontSize: "25px" }} />
+                </Dropdown>
               </div>
-              <div className="">
-                <UserOutlined /> <span>Giỏ hàng</span>
+              <div className=" ml-5 cursor-pointer ">
+                <Badge count={5}>
+                  <div className="text-white ">
+                    <ShoppingCartOutlined style={{ fontSize: "25px" }} />
+                  </div>
+                </Badge>
               </div>
             </div>
           </div>
